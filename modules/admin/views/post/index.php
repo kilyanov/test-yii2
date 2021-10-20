@@ -11,7 +11,7 @@ use yii\grid\GridView;
 * @var ActiveDataProvider $dataProvider
 */
 
-$this->title = 'Наказания';
+$this->title = 'Список постов';
 
 $this->params['breadcrumbs'][] = $this->title;
 
