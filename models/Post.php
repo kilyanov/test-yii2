@@ -5,6 +5,7 @@ namespace app\models;
 
 use Carbon\Carbon;
 use JetBrains\PhpStorm\ArrayShape;
+use JetBrains\PhpStorm\Pure;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveQuery;
@@ -27,6 +28,23 @@ class Post extends ActiveRecord
 
     public const IS_MODERATED = 1;
     public const NOT_MODERATED = 0;
+
+    #[ArrayShape([self::NOT_MODERATED => "string", self::IS_MODERATED => "string"])]
+    public static function getListModerationValue(): array
+    {
+        return [
+            self::NOT_MODERATED => 'Нет',
+            self::IS_MODERATED => 'Да'
+        ];
+    }
+
+    #[Pure]
+    public function getModeratedValue(): string
+    {
+        $list = self::getListModerationValue();
+
+        return $list[$this->moderated];
+    }
 
     #[ArrayShape(['timestamp' => "array"])]
     public function behaviors(): array

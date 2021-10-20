@@ -4,6 +4,7 @@
 /* @var $content string */
 
 use app\assets\AppAsset;
+use app\common\rbac\CollectionRolls;
 use app\widgets\Alert;
 use yii\bootstrap4\Breadcrumbs;
 use yii\bootstrap4\Html;
@@ -39,6 +40,7 @@ AppAsset::register($this);
         'items' => [
             ['label' => 'Главная', 'url' => ['/site/index']],
             ['label' => 'Посты', 'url' => ['/post']],
+            ['label' => 'Посты (модерация)', 'url' => ['/admin/post'], 'visible' => Yii::$app->user->can(CollectionRolls::ROLE_ADMIN)],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Войти', 'url' => ['/site/login']]
             ) : (

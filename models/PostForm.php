@@ -27,7 +27,9 @@ class PostForm extends Model
         return [
             [['message'], 'required'],
             ['moderated', 'required', 'on' => self::SCENARIO_ADMIN],
+            ['moderated', 'integer'],
             ['message', 'string', 'min' => 10],
+            ['moderated', 'in', 'range' => array_keys(Post::getListModerationValue())]
         ];
     }
 }
