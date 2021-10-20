@@ -1,10 +1,9 @@
 <?php
+declare(strict_types=1);
 
-use Carbon\Carbon;
 use app\models\User;
 use app\common\rbac\CollectionRolls;
 use yii\db\Migration;
-use yii\helpers\ArrayHelper;
 
 /**
  * Handles the creation of table `{{%add_users_to_users}}`.

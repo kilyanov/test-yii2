@@ -3,9 +3,7 @@ declare(strict_types=1);
 
 namespace app\controllers;
 
-use http\Encoding\Stream;
 use JetBrains\PhpStorm\ArrayShape;
-use phpDocumentor\Reflection\Types\String_;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -15,6 +13,7 @@ use app\models\LoginForm;
 
 class SiteController extends Controller
 {
+    #[ArrayShape(['access' => "array", 'verbs' => "array"])]
     public function behaviors(): array
     {
         return [
